@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  played_on: 2016-02-09
+  white_goal: 1
+  black_goal: 1
+
+two:
+  played_on: 2016-02-09
+  white_goal: 1
+  black_goal: 1
