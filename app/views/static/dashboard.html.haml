@@ -1,0 +1,9 @@
+%table
+  -Player.order("name ASC").each do |player|
+    -results=player.results
+    %tr
+      %td=player.name
+      %td=results[0]
+      %td=results[1]
+      %td=results[2]
+  

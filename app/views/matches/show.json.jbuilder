@@ -1,1 +1,1 @@
-json.extract! @match, :id, :played_on, :white_goal, :black_goal, :created_at, :updated_at
+json.extract! @match, :id, :played_on, :white_goals, :black_goals, :created_at, :updated_at

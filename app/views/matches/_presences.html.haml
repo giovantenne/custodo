@@ -2,7 +2,7 @@
   -Player.order("name ASC").each do |player|
     %tr
       %td=player.name
-      -["black","white"].each do |team|
+      -["white","black"].each do |team|
         %td
           -presence= Presence.where(player: player).where(match: match).first
           -if presence
