@@ -30,9 +30,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'rails_12factor', group: :production
-
+gem 'responders'
+gem 'haml'
+gem 'inherited_resources'
+gem 'simple_form'
 gem 'pg'
-gem 'rails_admin'
 gem 'figaro'
 
 group :development, :test do

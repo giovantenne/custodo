@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Player:</strong>
+  <%= @presence.player %>
+</p>
+
+<p>
+  <strong>Match:</strong>
+  <%= @presence.match %>
+</p>
+
+<p>
+  <strong>Team:</strong>
+  <%= @presence.team %>
+</p>
+
+<%= link_to 'Edit', edit_presence_path(@presence) %> |
+<%= link_to 'Back', presences_path %>

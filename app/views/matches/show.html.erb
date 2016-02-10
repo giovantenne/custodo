@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Played on:</strong>
+  <%= @match.played_on %>
+</p>
+
+<p>
+  <strong>White goal:</strong>
+  <%= @match.white_goal %>
+</p>
+
+<p>
+  <strong>Black goal:</strong>
+  <%= @match.black_goal %>
+</p>
+
+<%= link_to 'Edit', edit_match_path(@match) %> |
+<%= link_to 'Back', matches_path %>
+<p>
+<%= render partial: "presences", locals: {match: @match}%>
+</p>
