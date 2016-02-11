@@ -5,7 +5,7 @@ class Player < ActiveRecord::Base
     won = 0
     lost = 0
     tie =0
-    presences.each do |presence|
+    presences.joins(:match).where("matches.played_on < ?", Time.now).each do |presence|
       if (presence.team == "black" and presence.match.black_goals > presence.match.white_goals) or
        (presence.team == "white" and presence.match.black_goals < presence.match.white_goals) 
         won=won+1
@@ -16,6 +16,6 @@ class Player < ActiveRecord::Base
         tie=tie+1
       end
     end
-    return [presences.count, won, lost, tie]
+    return [presences.joins(:match).where("matches.played_on < ?", Time.now).count, won, lost, tie]
   end
 end
