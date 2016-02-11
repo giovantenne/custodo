@@ -1,23 +1,25 @@
-%table
-  %tr
-    %td
-      Giocatore
-    %td
-      Giocate
-    %td
-      Vinte
-    %td
-      Perse
-    %td
-      Pareggiate
-  -Player.order("name ASC").each do |player|
-    -results=player.results
+%table#myTable
+  %thead
     %tr
-      %td=player.name
-      %td=results[0]
-      %td=results[1]
-      %td=results[2]
-      %td=results[3]
+      %th
+        Giocatore
+      %th
+        Giocate
+      %th
+        Vinte
+      %th
+        Perse
+      %th
+        Pareggiate
+  %tbody
+    -Player.order("name ASC").each do |player|
+      -results=player.results
+      %tr
+        %td=player.name
+        %td=results[0]
+        %td=results[1]
+        %td=results[2]
+        %td=results[3]
   
 %br
 %table
