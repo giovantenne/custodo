@@ -4,7 +4,7 @@ class MatchesController < ApplicationController
   respond_to :html
 
   def index
-    @matches = Match.all
+    @matches = Match.all.order("played_on DESC")
     respond_with(@matches)
   end
 

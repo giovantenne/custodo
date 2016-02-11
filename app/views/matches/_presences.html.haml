@@ -1,4 +1,9 @@
 %table
+  %tr
+    %th Giocatore
+    %th Bianchi
+    %th Neri
+
   -Player.order("name ASC").each do |player|
     %tr
       %td=player.name
@@ -15,3 +20,5 @@
               =f.input :player_id, as: :hidden, input_html: {value: player.id}
               =f.submit team
     
+%br
+=link_to "Aggiungi giocatore", new_player_path

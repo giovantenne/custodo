@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
   respond_to :html
 
   def index
-    @players = Player.all
+    @players = Player.all.order("name ASC")
     respond_with(@players)
   end
 

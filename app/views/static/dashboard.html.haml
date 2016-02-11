@@ -1,4 +1,15 @@
 %table
+  %tr
+    %td
+      Giocatore
+    %td
+      Giocate
+    %td
+      Vinte
+    %td
+      Perse
+    %td
+      Pareggiate
   -Player.order("name ASC").each do |player|
     -results=player.results
     %tr
@@ -6,4 +17,5 @@
       %td=results[0]
       %td=results[1]
       %td=results[2]
+      %td=results[3]
   

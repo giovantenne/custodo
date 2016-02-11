@@ -16,6 +16,6 @@ class Player < ActiveRecord::Base
         tie=tie+1
       end
     end
-    return [won, lost, tie]
+    return [presences.count, won, lost, tie]
   end
 end
