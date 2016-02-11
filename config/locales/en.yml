@@ -21,3 +21,13 @@
 
 en:
   hello: "Hello world"
+  time:
+    formats:
+      long: "%d %B %Y alle %H:%M"
+      short: "%d/%m/%Y %H:%M"
+      parameters: "%d/%m %H:%M:%S"
+      seconds: "%H:%M:%S"
+      dateshort: "%d/%m/%Y"
+      datelong: "%d %B %Y"
+      timelong: "%H:%M"
+      video: "%d %b"

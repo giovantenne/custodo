@@ -1,5 +1,5 @@
 class Player < ActiveRecord::Base
-  has_many :presences
+  has_many :presences, dependent: :nullify
   has_many :matches, through: :presences
   def results
     won = 0
