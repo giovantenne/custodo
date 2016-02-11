@@ -13,8 +13,8 @@
   %tbody
     %tr
       %td.text-center
-        -@match.presences.includes(:player).where(team: "white").order("players.name ASC").each do |p|
+        -@match.presences.includes(:player).where(team: "white").order("id ASC").each do |p|
           %div=p.player.name
       %td.text-center
-        -@match.presences.includes(:player).where(team: "black").order("players.name ASC").each do |p|
+        -@match.presences.includes(:player).where(team: "black").order("id ASC").each do |p|
           %div=p.player.name
