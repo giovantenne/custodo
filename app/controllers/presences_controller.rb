@@ -25,7 +25,7 @@ class PresencesController < ApplicationController
     @presence = Presence.new(presence_params)
     @presence.save
     # respond_with(@presence)
-    redirect_to match_path(@presence.match)
+    redirect_to edit_match_path(@presence.match)
 
   end
 
@@ -37,7 +37,7 @@ class PresencesController < ApplicationController
   def destroy
     @presence.destroy
     # respond_with(@presence)
-    redirect_to match_path(@presence.match)
+    redirect_to edit_match_path(@presence.match)
   end
 
   private

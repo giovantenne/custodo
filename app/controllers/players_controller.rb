@@ -24,17 +24,17 @@ class PlayersController < ApplicationController
   def create
     @player = Player.new(player_params)
     @player.save
-    respond_with(@player)
+    redirect_to players_path(admin: true)
   end
 
   def update
     @player.update(player_params)
-    respond_with(@player)
+    redirect_to players_path(admin: true)
   end
 
   def destroy
     @player.destroy
-    respond_with(@player)
+    redirect_to players_path(admin: true)
   end
 
   private

@@ -1,0 +1,12 @@
+= simple_form_for(@player) do |f|
+  %table.table.table-condensed.table-striped.table-bordered.table-hover
+    %tbody
+      %tr
+        %th name
+        %td=f.text_field :name
+      %tr
+        %td.text-center{colspan: 2}
+          =f.submit "Salva", class: "btn btn-success", style: "width:100%"
+
+
+

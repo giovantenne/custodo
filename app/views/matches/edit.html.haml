@@ -1,0 +1,31 @@
+%table.table.table-condensed.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th Giocatore
+      %th.text-center Bianchi
+      %th.text-center Neri
+
+  %tbody
+    -Player.order("name ASC").each do |player|
+      %tr
+        %td=player.name
+        -["white","black"].each do |team|
+          %td.text-center
+            -presence= Presence.where(player: player).where(match: @match).first
+            -if presence
+              -if presence.team == team
+                %strong
+                  =link_to "Elimina", presence_path(presence), method: :delete, class: "btn btn-sm btn-danger"
+              -else
+            -else
+              =simple_form_for Presence.new do |f|
+                =f.input :team, as: :hidden, input_html: {value: team}
+                =f.input :match_id, as: :hidden, input_html: {value: @match.id}
+                =f.input :player_id, as: :hidden, input_html: {value: player.id}
+                =f.submit "Iscrivi", class: "btn btn-sm btn-success"
+    
+%br
+=link_to "Aggiungi giocatore", new_player_path, class: "btn btn-success"
+%br
+%br
+= render 'form' 

@@ -1,0 +1,16 @@
+
+= simple_form_for(@match) do |f|
+  %table.table.table-condensed.table-striped.table-bordered.table-hover
+    %tbody
+      %tr
+        %th Data
+        %td=f.date_select :played_on
+      %tr
+        %th Goal Bianchi
+        %td=f.number_field :white_goals 
+      %tr
+        %th Goal Neri
+        %td=f.number_field :black_goals 
+      %tr
+        %td.text-center{colspan: 2}
+          =f.submit "Salva", class: "btn btn-success", style: "width:100%"

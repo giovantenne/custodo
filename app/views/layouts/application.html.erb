@@ -22,7 +22,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Custodo</a>
+      <a class="navbar-brand" href="/">Custodello-App</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -31,13 +31,17 @@
         <li><a href="/">Giocatori</a></li>
       <li><a href="<%=matches_path%>">Partite</a></li>
       <li><a href="<%=stats_path%>">Stats</a></li>
-      <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="<%=matches_path(admin: true)%>">Matches</a></li>
-            <li><a href="<%=root_path(admin: true)%>">Players</a></li>
-          </ul>
-        </li>
+      <%if authorized? or true %>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="<%=matches_path(admin: true)%>">Matches</a></li>
+              <li><a href="<%=root_path(admin: true)%>">Players</a></li>
+            </ul>
+          </li>
+        <%else%>
+          <li><a href="<%=new_match_path%>">Admin</a></li>
+        <%end%>
         <%# <li><a href="#{matches_path}">Partite</a></li> %>
       </ul>
     </div><!-- /.navbar-collapse -->

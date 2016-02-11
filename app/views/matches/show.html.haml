@@ -1,9 +1,3 @@
-%p#notice=notice
-
--if params["admin"]=="true"
-  = link_to 'Edit', edit_match_path(@match)
-  %p
-    = render partial: "presences", locals: {match: @match}
 %table.table.table-condensed.table-striped.table-bordered.table-hover
   %thead
     %tr

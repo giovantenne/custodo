@@ -1,0 +1,34 @@
+-results=@player.results
+%table.table.table-condensed.table-striped.table-bordered.table-hover
+  %tbody
+    %tr
+      %th Giocatore
+      %td=@player.name
+    %tr
+      %th Giocate
+      %td=results[0]
+    %tr
+      %th Vinte
+      %td=results[1]
+    %tr
+      %th Perse
+      %td=results[2]
+    %tr
+      %th Pareggiate
+      %td=results[3]
+%table.table.table-condensed.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th.text-center Data
+      %th.text-center Team
+      %th.text-center Bianchi
+      %th.text-center Neri
+      %th.text-center Giocatori
+  %tbody
+    -@player.presences.joins(:match).order("matches.played_on DESC").each do |p|
+      %tr{class: presence_color(p)}
+        %td.text-center=link_to p.match.played_on, p.match
+        %td.text-center=p.team == "black" ? "Neri" : "Bianchi"
+        %td.text-center=p.match.white_goals
+        %td.text-center=p.match.black_goals
+        %td.text-center=p.match.presences.count

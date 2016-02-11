@@ -25,7 +25,7 @@ class MatchesController < ApplicationController
   def create
     @match = Match.new(match_params)
     @match.save
-    respond_with(@match)
+    redirect_to edit_match_path(@match)
   end
 
   def update
@@ -35,7 +35,7 @@ class MatchesController < ApplicationController
 
   def destroy
     @match.destroy
-    respond_with(@match)
+    redirect_to matches_path(admin: true)
   end
 
   private

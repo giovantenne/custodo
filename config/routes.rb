@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'static#dashboard'
+  root 'players#index'
   get "stats" => "static#stats"
 
   # Example of regular route:
