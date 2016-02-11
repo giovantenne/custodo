@@ -21,6 +21,6 @@ $(document).ready(function() {
   }); 
   $(".clickable-row").click(function(event) {
     if(event.target.classList[0]!="btn")
-      window.document.location = $(this).data("href");
+      Turbolinks.visit($(this).data("href"));
   });
 }); 
