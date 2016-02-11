@@ -6,6 +6,6 @@ module ApplicationHelper
     max_player= Player.maximum(:updated_at).try(:utc).try(:to_s, :number)
     max_match = Match.maximum(:updated_at).try(:utc).try(:to_s, :number)
     max_presence = Presence.maximum(:updated_at).try(:utc).try(:to_s, :number)
-    "#{fragment}-#{max_player}-#{max_match}-#{max_presence}"
+    "#{fragment}-#{max_player}-#{max_match}-#{max_presence}-#{params}"
   end
 end
