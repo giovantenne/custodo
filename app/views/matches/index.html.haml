@@ -1,22 +1,23 @@
-%table.table.table-condensed.table-striped.table-bordered.table-hover
-  %thead
-    %tr
-      %th.text-center Data
-      %th.text-center Bianchi
-      %th.text-center Neri
-      %th.text-center Giocatori
-      -if params["admin"]=="true"
-        %th{colspan: "2"}
-  %tbody
-    -Match.order("played_on DESC").each do |match|
-      %tr.clickable-row{data: {href: match_url(match)}}
-        %td.text-center=I18n.l(match.played_on, format: "%d/%m/%Y")
-        %td.text-center=match.white_goals
-        %td.text-center=match.black_goals
-        %td.text-center=match.presences.count
+-cache(cache_key_for_results("match-index")) do
+  %table.table.table-condensed.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th.text-center Data
+        %th.text-center Bianchi
+        %th.text-center Neri
+        %th.text-center Giocatori
         -if params["admin"]=="true"
-          %td.text-center= link_to 'Edit', edit_match_path(match),class: "btn btn-warning btn-sm"
-          %td.text-center= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger"
--if params["admin"]=="true"
-  %br
-  =link_to "Nuova partita", new_match_path, class: "btn btn-success"
+          %th{colspan: "2"}
+    %tbody
+      -Match.order("played_on DESC").each do |match|
+        %tr.clickable-row{data: {href: match_url(match)}}
+          %td.text-center=I18n.l(match.played_on, format: "%d/%m/%Y")
+          %td.text-center=match.white_goals
+          %td.text-center=match.black_goals
+          %td.text-center=match.presences.count
+          -if params["admin"]=="true"
+            %td.text-center= link_to 'Edit', edit_match_path(match),class: "btn btn-warning btn-sm"
+            %td.text-center= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger"
+  -if params["admin"]=="true"
+    %br
+    =link_to "Nuova partita", new_match_path, class: "btn btn-success"

@@ -1,20 +1,21 @@
-%table.table.table-condensed.table-striped.table-bordered
-  %thead
-    %tr
-      %th.text-center{colspan:2}
-        Giocata il:
-        =I18n.l(@match.played_on, format: "%d/%m/%Y")
-    %tr
-      %th.text-center Goal bianchi:
-      %th.text-center Goal neri:
-    %tr
-      %th.text-center=@match.white_goals
-      %th.text-center=@match.black_goals
-  %tbody
-    %tr
-      %td.text-center
-        -@match.presences.includes(:player).where(team: "white").order("id ASC").each do |p|
-          %div=p.player.name
-      %td.text-center
-        -@match.presences.includes(:player).where(team: "black").order("id ASC").each do |p|
-          %div=p.player.name
+-cache(cache_key_for_results("match-show-#{@match.id}")) do
+  %table.table.table-condensed.table-striped.table-bordered
+    %thead
+      %tr
+        %th.text-center{colspan:2}
+          Giocata il:
+          =I18n.l(@match.played_on, format: "%d/%m/%Y")
+      %tr
+        %th.text-center Goal bianchi:
+        %th.text-center Goal neri:
+      %tr
+        %th.text-center=@match.white_goals
+        %th.text-center=@match.black_goals
+    %tbody
+      %tr
+        %td.text-center
+          -@match.presences.includes(:player).where(team: "white").order("id ASC").each do |p|
+            %div=p.player.name
+        %td.text-center
+          -@match.presences.includes(:player).where(team: "black").order("id ASC").each do |p|
+            %div=p.player.name
