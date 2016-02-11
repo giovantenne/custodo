@@ -19,7 +19,8 @@ $(document).ready(function() {
   $("#myTable").tablesorter({
     sortList: [[2,1]]
   }); 
-  $(".clickable-row").click(function() {
-    window.document.location = $(this).data("href");
+  $(".clickable-row").click(function(event) {
+    if(event.target.classList[0]!="btn")
+      window.document.location = $(this).data("href");
   });
 }); 
