@@ -15,10 +15,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-$(document).ready(function() 
-    { 
-        $("#myTable").tablesorter({
-          sortList: [[2,1]]
-        }); 
-    } 
-); 
+$(document).ready(function() { 
+  $("#myTable").tablesorter({
+    sortList: [[2,1]]
+  }); 
+  $(".clickable-row").click(function() {
+    window.document.location = $(this).data("href");
+  });
+}); 

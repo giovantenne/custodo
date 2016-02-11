@@ -9,8 +9,8 @@
         %th{colspan: "2"}
   %tbody
     -Match.order("played_on DESC").each do |match|
-      %tr
-        %td.text-center=link_to I18n.l(match.played_on, format: "%d/%m/%Y"), match
+      %tr.clickable-row{data: {href: match_url(match)}}
+        %td.text-center=I18n.l(match.played_on, format: "%d/%m/%Y")
         %td.text-center=match.white_goals
         %td.text-center=match.black_goals
         %td.text-center=match.presences.count

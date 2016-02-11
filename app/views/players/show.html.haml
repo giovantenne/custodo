@@ -1,5 +1,5 @@
 -results=@player.results
-%table.table.table-condensed.table-striped.table-bordered.table-hover
+%table.table.table-condensed.table-striped.table-bordered
   %tbody
     %tr
       %th Giocatore
@@ -26,8 +26,8 @@
       %th.text-center Giocatori
   %tbody
     -@player.presences.joins(:match).order("matches.played_on DESC").each do |p|
-      %tr{class: presence_color(p)}
-        %td.text-center=link_to I18n.l(p.match.played_on, format: "%d/%m/%Y"), p.match
+      %tr.clickable-row{data: {href: match_url(p.match)},class: presence_color(p)}
+        %td.text-center=I18n.l(p.match.played_on, format: "%d/%m/%Y")
         %td.text-center=p.team == "black" ? "Neri" : "Bianchi"
         %td.text-center=p.match.white_goals
         %td.text-center=p.match.black_goals
