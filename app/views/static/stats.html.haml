@@ -1,0 +1,15 @@
+%table.table.table-condensed.table-striped.table-bordered.table-hover
+  %tbody
+    %tr
+      %td Partite giocate:
+      %td=Match.where("played_on < ?", Time.now).count
+    %tr
+      %td Vinte dai neri:
+      %td=Match.where("white_goals < black_goals").count
+    %tr
+      %td Vinte dai bianchi:
+      %td=Match.where("white_goals > black_goals").count
+    %tr
+      %td Pareggiate:
+      %td=Match.where("white_goals = black_goals").where("played_on < ?", Time.now).count
+

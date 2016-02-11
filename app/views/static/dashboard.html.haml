@@ -1,42 +1,18 @@
-%table#myTable
+%table.table.table-condensed.table-striped.table-bordered.table-hover#myTable
   %thead
     %tr
-      %th
-        Giocatore
-      %th
-        Giocate
-      %th
-        Vinte
-      %th
-        Perse
-      %th
-        Pareggiate
+      %th Giocatore
+      %th.text-center Giocate
+      %th.text-center Vinte
+      %th.text-center Perse
+      %th.text-center Pareggiate
   %tbody
     -Player.order("name ASC").each do |player|
       -results=player.results
       %tr
-        %td=player.name
-        %td=results[0]
-        %td=results[1]
-        %td=results[2]
-        %td=results[3]
+        %td=link_to player.name, player
+        %td.text-center=results[0]
+        %td.text-center=results[1]
+        %td.text-center=results[2]
+        %td.text-center=results[3]
   
-%br
-%table
-  %tr
-    %td Partite giocate:
-    %td=Match.where("played_on < ?", Time.now).count
-  %tr
-    %td Vinte dai neri:
-    %td=Match.where("white_goals < black_goals").count
-  %tr
-    %td Vinte dai bianchi:
-    %td=Match.where("white_goals > black_goals").count
-  %tr
-    %td Pareggiate:
-    %td=Match.where("white_goals = black_goals").where("played_on < ?", Time.now).count
-
-%br
-=link_to "Matches", matches_path
-%br
-=link_to "Players", players_path

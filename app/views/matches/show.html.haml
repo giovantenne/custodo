@@ -1,0 +1,26 @@
+%p#notice=notice
+
+-if params["admin"]=="true"
+  = link_to 'Edit', edit_match_path(@match)
+  %p
+    = render partial: "presences", locals: {match: @match}
+%table.table.table-condensed.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th.text-center{colspan:2}
+        Giocata il:
+        =@match.played_on
+    %tr
+      %th.text-center Goal bianchi:
+      %th.text-center Goal neri:
+    %tr
+      %th.text-center=@match.white_goals
+      %th.text-center=@match.black_goals
+  %tbody
+    %tr
+      %td.text-center
+        -@match.presences.includes(:player).where(team: "white").order("players.name ASC").each do |p|
+          %div=p.player.name
+      %td.text-center
+        -@match.presences.includes(:player).where(team: "black").order("players.name ASC").each do |p|
+          %div=p.player.name
