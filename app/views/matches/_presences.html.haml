@@ -8,12 +8,16 @@
     %tr
       %td=player.name
       -["white","black"].each do |team|
-        %td
-          -presence= Presence.where(player: player).where(match: match).first
-          -if presence
-            -if presence.team == team
-              =link_to "Elimina", presence_path(presence), data: {method: :delete}
+        -presence= Presence.where(player: player).where(match: match).first
+        -if presence
+          -if presence.team == team
+            %td{style: "background-color: green"}
+              %strong
+                =button_to "Elimina", presence_path(presence), method: :delete
           -else
+            %td
+        -else
+          %td
             =simple_form_for Presence.new do |f|
               =f.input :team, as: :hidden, input_html: {value: team}
               =f.input :match_id, as: :hidden, input_html: {value: match.id}

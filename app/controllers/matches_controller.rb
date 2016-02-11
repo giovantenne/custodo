@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-  http_basic_authenticate_with name: ENV["username"], password: ENV["password"], except: :index
+  http_basic_authenticate_with name: ENV["username"], password: ENV["password"], except: [:index, :show]
 
   before_action :set_match, only: [:show, :edit, :update, :destroy]
 
