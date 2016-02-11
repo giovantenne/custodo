@@ -16,6 +16,8 @@
 //= require_tree .
 $(document).ready(function() 
     { 
-        $("#myTable").tablesorter(); 
+        $("#myTable").tablesorter({
+          sortList: [[2,1]]
+        }); 
     } 
 ); 
