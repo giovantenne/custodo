@@ -1,0 +1,58 @@
+!!!
+%html
+  %head
+    %title Custodo
+    %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", :integrity => "sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==", :rel => "stylesheet"}/
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %script{:crossorigin => "anonymous", :integrity => "sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==", :src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"}
+  %body
+    %nav.navbar.navbar-default.navbar-fixed-top
+      .container
+        / Brand and toggle get grouped for better mobile display
+        .navbar-header
+          %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          - if current_page?(root_url)
+            %a.navbar-brand{:href => "/"}= ENV["app_name"]
+          - else
+            = link_to :back, class: "btn btn-sm navbar-brand" do
+              %span.glyphicon.glyphicon-chevron-left
+              Indietro
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              %a{:href => "/"}
+                %i.glyphicon.glyphicon-user
+                Giocatori
+            %li
+              %a{:href => matches_path}
+                %i.glyphicon.glyphicon-calendar
+                Partite
+            %li
+              %a{:href => stats_path}
+                %i.glyphicon.glyphicon-stats
+                Stats
+            - if authorized? or true
+              %li.dropdown
+                %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                  %i.glyphicon.glyphicon-lock
+                  Admin
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => matches_path(admin: true)} Matches
+                  %li
+                    %a{:href => root_path(admin: true)} Players
+            - else
+              %li
+                %a{:href => new_match_path} Admin
+        / /.navbar-collapse
+      / /.container-fluid
+    .container
+      = yield
