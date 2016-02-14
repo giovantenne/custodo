@@ -21,7 +21,7 @@
           - if current_page?(root_url)
             %a.navbar-brand{:href => "/"}= ENV["app_name"]
           - else
-            = link_to :back, class: "btn btn-sm navbar-brand" do
+            = link_to "javascript:history.back()", class: "btn btn-sm navbar-brand" do
               %span.glyphicon.glyphicon-chevron-left
               Indietro
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
