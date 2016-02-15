@@ -13,7 +13,7 @@
     %tbody
       -Player.order("name ASC").each do |player|
         -results=player.results
-        %tr.clickable-row{data: {href: player_url(player)}}
+        %tr.clickable-row{data: {href: player_path(player)}}
           %td
             %strong=player.name
           %td.text-center=results[0]

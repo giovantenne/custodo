@@ -16,12 +16,12 @@
         %td.text-center{style: "padding:15px"}
           %table.table.table-bordered.table-condensed.table-striped.table-hover{style: "margin-bottom:0px"}
             -@match.presences.includes(:player).where(team: "white").order("id ASC").each do |p|
-              %tr.clickable-row{data: {href: player_url(p.player)}}
+              %tr.clickable-row{data: {href: player_path(p.player)}}
                 %td
                   =p.player.name
         %td.text-center{style: "padding:15px"}
           %table.table.table-bordered.table-condensed.table-striped.table-hover{style: "margin-bottom:0px"}
             -@match.presences.includes(:player).where(team: "black").order("id ASC").each do |p|
-              %tr.clickable-row{data: {href: player_url(p.player)}}
+              %tr.clickable-row{data: {href: player_path(p.player)}}
                 %td
                   =p.player.name
