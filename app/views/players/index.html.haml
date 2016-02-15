@@ -4,11 +4,12 @@
       %tr
         %th Giocatore
         %th.text-center Giocate
-        %th.text-center Vinte
-        %th.text-center Perse
-        %th.text-center Pari
         -if params["admin"]=="true"
           %th{colspan: "2"}
+        -else
+          %th.text-center Vinte
+          %th.text-center Perse
+          %th.text-center Pari
     %tbody
       -Player.order("name ASC").each do |player|
         -results=player.results
@@ -16,12 +17,17 @@
           %td
             %strong=player.name
           %td.text-center=results[0]
-          %td.text-center=results[1]
-          %td.text-center=results[2]
-          %td.text-center=results[3]
           -if params["admin"]=="true"
-            %td.text-center= link_to 'Edit', edit_player_path(player),class: "btn btn-warning btn-sm"
-            %td.text-center= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger"
+            %td.text-center
+              = link_to  edit_player_path(player),class: "btn btn-warning btn-sm" do
+                %span.glyphicon.glyphicon-pencil
+            %td.text-center
+              = link_to  player, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" do
+                %span.glyphicon.glyphicon-trash
+          -else
+            %td.text-center=results[1]
+            %td.text-center=results[2]
+            %td.text-center=results[3]
   -if params["admin"]=="true"
     %br
     =link_to "Nuovo giocatore", new_player_path, class: "btn btn-success"

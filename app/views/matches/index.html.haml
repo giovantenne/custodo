@@ -16,8 +16,13 @@
           %td.text-center=match.black_goals
           %td.text-center=match.presences.count
           -if params["admin"]=="true"
-            %td.text-center= link_to 'Edit', edit_match_path(match),class: "btn btn-warning btn-sm"
-            %td.text-center= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger"
+            %td.text-center
+              = link_to edit_match_path(match),class: "btn btn-warning btn-sm" do
+                %span.glyphicon.glyphicon-pencil
+            %td.text-center   
+              =link_to  match, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" do
+                %span.glyphicon.glyphicon-trash
+          -else
   -if params["admin"]=="true"
     %br
     =link_to "Nuova partita", new_match_path, class: "btn btn-success"
