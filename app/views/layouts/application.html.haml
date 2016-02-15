@@ -3,6 +3,7 @@
   %head
     %title Custodo
     %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", :integrity => "sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==", :rel => "stylesheet"}/
+    -# %link{:href => "//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css", :rel => "stylesheet", :type => "text/css"}/
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
@@ -19,11 +20,15 @@
             %span.icon-bar
             %span.icon-bar
           - if current_page?(root_url)
-            %a.navbar-brand{:href => "/"}= ENV["app_name"]
+            %a.navbar-brand{:href => "/"}
+              %span.glyphicon.glyphicon-phone
+              = ENV["app_name"]
+              %span.spinner.glyphicon.glyphicon-refresh.glyphicon-spin
           - else
             = link_to "javascript:history.back()", class: "btn btn-sm navbar-brand" do
               %span.glyphicon.glyphicon-chevron-left
               Indietro
+              %span.spinner.glyphicon.glyphicon-refresh.glyphicon-spin
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           %ul.nav.navbar-nav.navbar-right
             %li

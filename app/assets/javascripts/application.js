@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require_tree .
 $(document).ready(function() { 
+  var myVar;
   $("#myTable").tablesorter({
     sortList: [[2,1]]
   }); 
@@ -23,6 +24,18 @@ $(document).ready(function() {
     if(event.target.classList[0]!="btn")
       Turbolinks.visit($(this).data("href"));
   });
+  $(".spinner").hide();
+  $(document).on("page:fetch", function(){
+    myVar=setTimeout(function(){$(".spinner").show()}, 500);
+  });
+
+  $(document).on("page:receive", function(){
+    clearTimeout(myVar);
+    $(".spinner").hide();
+  });
+
+
+
 }); 
 $(document).on('click','.navbar-collapse.in',function(e) {
 
