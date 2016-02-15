@@ -18,7 +18,7 @@
 $(document).ready(function() { 
   var myVar;
   $("#myTable").tablesorter({
-    sortList: [[2,1]]
+    sortList: [[2,1],[3,1]]
   }); 
   $(".clickable-row").click(function(event) {
     if(event.target.classList[0]!="btn")
