@@ -44,6 +44,6 @@ class MatchesController < ApplicationController
     end
 
     def match_params
-      params.require(:match).permit(:played_on, :white_goals, :black_goals)
+      params.require(:match).permit(:played_on, :white_goals, :black_goals, :played)
     end
 end

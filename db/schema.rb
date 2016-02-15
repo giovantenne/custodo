@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160209221430) do
+ActiveRecord::Schema.define(version: 20160215143059) do
 
   create_table "matches", force: :cascade do |t|
     t.date     "played_on"
     t.integer  "white_goals", default: 0
     t.integer  "black_goals", default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "played",      default: false
   end
 
   create_table "players", force: :cascade do |t|

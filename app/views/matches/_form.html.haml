@@ -3,6 +3,9 @@
   %table.table.table-condensed.table-striped.table-bordered.table-hover
     %tbody
       %tr
+        %th Giocata
+        %td=f.check_box :played
+      %tr
         %th Data
         %td=f.date_select :played_on
       %tr
