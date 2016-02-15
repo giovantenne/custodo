@@ -7,6 +7,7 @@
         -if params["admin"]=="true"
           %th{colspan: "2"}
         -else
+          %th.text-center Score
           %th.text-center Vinte
           %th.text-center Perse
           %th.text-center Pari
@@ -17,6 +18,8 @@
           %td
             %strong=player.name
           %td.text-center=results[0]
+          %td.text-center
+            ="#{score(results)}%"
           -if params["admin"]=="true"
             %td.text-center
               = link_to  edit_player_path(player),class: "btn btn-warning btn-sm" do

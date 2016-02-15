@@ -10,4 +10,7 @@ module PlayersHelper
       return "default"
     end
   end
+  def score(results)
+    (results[1]*3+results[3])*100/(3*results[0])
+  end
 end
