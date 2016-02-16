@@ -21,10 +21,11 @@
               %tr.clickable-row{data: {href: player_path(p.player)}}
                 %td
                   =p.player.name
-                %td
-                  -score=score(p.player.results)
-                  ="#{score}"
-                  -white_score = white_score + score
+                -if !@match.played
+                  %td
+                    -score=score(p.player.results)
+                    ="#{score}"
+                    -white_score = white_score + score
             -if !@match.played
               %tr
                 %td
@@ -36,10 +37,11 @@
               %tr.clickable-row{data: {href: player_path(p.player)}}
                 %td
                   =p.player.name
-                %td
-                  -score=score(p.player.results)
-                  ="#{score}"
-                  -black__score = white_score + score
+                -if !@match.played
+                  %td
+                    -score=score(p.player.results)
+                    ="#{score}"
+                    -black__score = white_score + score
             -if !@match.played
               %tr
                 %td
