@@ -5,18 +5,18 @@ class MatchesControllerTest < ActionController::TestCase
     @match = matches(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get :index
     assert_response :success
     assert_not_nil assigns(:matches)
   end
 
-  test "should get new" do
+  test 'should get new' do
     get :new
     assert_response :success
   end
 
-  test "should create match" do
+  test 'should create match' do
     assert_difference('Match.count') do
       post :create, match: { black_goal: @match.black_goal, played_on: @match.played_on, white_goal: @match.white_goal }
     end
@@ -24,22 +24,22 @@ class MatchesControllerTest < ActionController::TestCase
     assert_redirected_to match_path(assigns(:match))
   end
 
-  test "should show match" do
+  test 'should show match' do
     get :show, id: @match
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get :edit, id: @match
     assert_response :success
   end
 
-  test "should update match" do
+  test 'should update match' do
     patch :update, id: @match, match: { black_goal: @match.black_goal, played_on: @match.played_on, white_goal: @match.white_goal }
     assert_redirected_to match_path(assigns(:match))
   end
 
-  test "should destroy match" do
+  test 'should destroy match' do
     assert_difference('Match.count', -1) do
       delete :destroy, id: @match
     end

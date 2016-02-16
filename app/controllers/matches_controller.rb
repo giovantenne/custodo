@@ -1,12 +1,12 @@
 class MatchesController < ApplicationController
-  http_basic_authenticate_with name: ENV["username"], password: ENV["password"], except: [:index, :show]
+  http_basic_authenticate_with name: ENV['username'], password: ENV['password'], except: [:index, :show]
 
   before_action :set_match, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
 
   def index
-    @matches = Match.all.order("played_on DESC")
+    @matches = Match.all.order('played_on DESC')
     respond_with(@matches)
   end
 
@@ -39,11 +39,12 @@ class MatchesController < ApplicationController
   end
 
   private
-    def set_match
-      @match = Match.find(params[:id])
-    end
 
-    def match_params
-      params.require(:match).permit(:played_on, :white_goals, :black_goals, :played)
-    end
+  def set_match
+    @match = Match.find(params[:id])
+  end
+
+  def match_params
+    params.require(:match).permit(:played_on, :white_goals, :black_goals, :played)
+  end
 end

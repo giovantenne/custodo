@@ -11,32 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160215143059) do
-
-  create_table "matches", force: :cascade do |t|
-    t.date     "played_on"
-    t.integer  "white_goals", default: 0
-    t.integer  "black_goals", default: 0
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.boolean  "played",      default: false
+ActiveRecord::Schema.define(version: 20_160_215_143_059) do
+  create_table 'matches', force: :cascade do |t|
+    t.date     'played_on'
+    t.integer  'white_goals', default: 0
+    t.integer  'black_goals', default: 0
+    t.datetime 'created_at',                  null: false
+    t.datetime 'updated_at',                  null: false
+    t.boolean  'played', default: false
   end
 
-  create_table "players", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'players', force: :cascade do |t|
+    t.string   'name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "presences", force: :cascade do |t|
-    t.integer  "player_id"
-    t.integer  "match_id"
-    t.string   "team"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'presences', force: :cascade do |t|
+    t.integer  'player_id'
+    t.integer  'match_id'
+    t.string   'team'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  add_index "presences", ["match_id"], name: "index_presences_on_match_id"
-  add_index "presences", ["player_id"], name: "index_presences_on_player_id"
-
+  add_index 'presences', ['match_id'], name: 'index_presences_on_match_id'
+  add_index 'presences', ['player_id'], name: 'index_presences_on_player_id'
 end

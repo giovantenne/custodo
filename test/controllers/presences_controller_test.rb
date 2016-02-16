@@ -5,18 +5,18 @@ class PresencesControllerTest < ActionController::TestCase
     @presence = presences(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get :index
     assert_response :success
     assert_not_nil assigns(:presences)
   end
 
-  test "should get new" do
+  test 'should get new' do
     get :new
     assert_response :success
   end
 
-  test "should create presence" do
+  test 'should create presence' do
     assert_difference('Presence.count') do
       post :create, presence: { match_id: @presence.match_id, player_id: @presence.player_id, team: @presence.team }
     end
@@ -24,22 +24,22 @@ class PresencesControllerTest < ActionController::TestCase
     assert_redirected_to presence_path(assigns(:presence))
   end
 
-  test "should show presence" do
+  test 'should show presence' do
     get :show, id: @presence
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get :edit, id: @presence
     assert_response :success
   end
 
-  test "should update presence" do
+  test 'should update presence' do
     patch :update, id: @presence, presence: { match_id: @presence.match_id, player_id: @presence.player_id, team: @presence.team }
     assert_redirected_to presence_path(assigns(:presence))
   end
 
-  test "should destroy presence" do
+  test 'should destroy presence' do
     assert_difference('Presence.count', -1) do
       delete :destroy, id: @presence
     end

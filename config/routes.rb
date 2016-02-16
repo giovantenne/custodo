@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'players#index'
-  get "stats" => "static#stats"
+  get 'stats' => 'static#stats'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,5 +1,5 @@
 class PresencesController < ApplicationController
-  http_basic_authenticate_with name: ENV["username"], password: ENV["password"]
+  http_basic_authenticate_with name: ENV['username'], password: ENV['password']
   before_action :set_presence, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
@@ -26,7 +26,6 @@ class PresencesController < ApplicationController
     @presence.save
     # respond_with(@presence)
     redirect_to edit_match_path(@presence.match)
-
   end
 
   def update
@@ -41,11 +40,12 @@ class PresencesController < ApplicationController
   end
 
   private
-    def set_presence
-      @presence = Presence.find(params[:id])
-    end
 
-    def presence_params
-      params.require(:presence).permit(:player_id, :match_id, :team)
-    end
+  def set_presence
+    @presence = Presence.find(params[:id])
+  end
+
+  def presence_params
+    params.require(:presence).permit(:player_id, :match_id, :team)
+  end
 end

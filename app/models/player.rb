@@ -4,18 +4,18 @@ class Player < ActiveRecord::Base
   def results
     won = 0
     lost = 0
-    tie =0
+    tie = 0
     presences.joins(:match).where("matches.played = 't'").each do |presence|
-      if (presence.team == "black" and presence.match.black_goals > presence.match.white_goals) or
-       (presence.team == "white" and presence.match.black_goals < presence.match.white_goals) 
-        won=won+1
-      elsif (presence.team == "black" and presence.match.black_goals < presence.match.white_goals) or
-      (presence.team == "white" and presence.match.black_goals > presence.match.white_goals) 
-        lost=lost+1
-      elsif presence.match.white_goals == presence.match.black_goals 
-        tie=tie+1
+      if (presence.team == 'black' && presence.match.black_goals > presence.match.white_goals) ||
+         (presence.team == 'white' && presence.match.black_goals < presence.match.white_goals)
+        won+ = 1
+      elsif (presence.team == 'black' && presence.match.black_goals < presence.match.white_goals) ||
+            (presence.team == 'white' && presence.match.black_goals > presence.match.white_goals)
+        lost+ = 1
+      elsif presence.match.white_goals == presence.match.black_goals
+        tie+ = 1
       end
     end
-    return [presences.joins(:match).where("matches.played = 't'").count, won, lost, tie]
+    [presences.joins(:match).where("matches.played = 't'").count, won, lost, tie]
   end
 end

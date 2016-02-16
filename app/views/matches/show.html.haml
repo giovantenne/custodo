@@ -1,16 +1,19 @@
 -cache(cache_key_for_results("match-show-#{@match.id}")) do
+  -white_score=0
+  -black_score=0
   %table.table.table-condensed.table-bordered
     %thead
       %tr
         %th.text-center{colspan:2}
           Data:
           =I18n.l(@match.played_on, format: "%d/%m/%Y")
-      %tr
-        %th.text-center Goal bianchi:
-        %th.text-center Goal neri:
-      %tr
-        %th.text-center=@match.white_goals
-        %th.text-center=@match.black_goals
+      -if @match.played
+        %tr
+          %th.text-center Goal bianchi:
+          %th.text-center Goal neri:
+        %tr
+          %th.text-center=@match.white_goals
+          %th.text-center=@match.black_goals
     %tbody
       %tr
         %td.text-center{style: "padding:15px"}
@@ -20,7 +23,14 @@
                 %td
                   =p.player.name
                 %td
-                  ="#{score(p.player.results)}"
+                  -score=score(p.player.results)
+                  ="#{score}"
+                  -white_score = white_score + score
+            -if !@match.played
+              %tr
+                %td
+                %td.success
+                  %strong="#{white_score}"
         %td.text-center{style: "padding:15px"}
           %table.table.table-bordered.table-condensed.table-striped.table-hover{style: "margin-bottom:0px"}
             -@match.presences.includes(:player).where(team: "black").order("id ASC").each do |p|
@@ -28,4 +38,11 @@
                 %td
                   =p.player.name
                 %td
-                  ="#{score(p.player.results)}"
+                  -score=score(p.player.results)
+                  ="#{score}"
+                  -black__score = white_score + score
+            -if !@match.played
+              %tr
+                %td
+                %td.success
+                  %strong="#{black_score}"

@@ -1,11 +1,11 @@
 class PlayersController < ApplicationController
-  http_basic_authenticate_with name: ENV["username"], password: ENV["password"], except: [:index, :show]
+  http_basic_authenticate_with name: ENV['username'], password: ENV['password'], except: [:index, :show]
   before_action :set_player, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
 
   def index
-    @players = Player.all.order("name ASC")
+    @players = Player.all.order('name ASC')
     respond_with(@players)
   end
 
@@ -38,11 +38,12 @@ class PlayersController < ApplicationController
   end
 
   private
-    def set_player
-      @player = Player.find(params[:id])
-    end
 
-    def player_params
-      params.require(:player).permit(:name)
-    end
+  def set_player
+    @player = Player.find(params[:id])
+  end
+
+  def player_params
+    params.require(:player).permit(:name)
+  end
 end
