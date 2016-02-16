@@ -14,7 +14,7 @@ class StaticController < ApplicationController
     if params['username'] == ENV['username'] &&
        params['password'] == ENV['password']
       session['logged'] = 'true'
-      redirect_to matches_path
+      redirect_to matches_path(admin: true)
     else
       redirect_to '/login'
     end
