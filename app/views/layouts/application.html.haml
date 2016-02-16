@@ -43,7 +43,7 @@
               %a{:href => stats_path}
                 %i.glyphicon.glyphicon-stats
                 Stats
-            - if authorized? or true
+            - if logged?
               %li.dropdown
                 %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
                   %i.glyphicon.glyphicon-lock
@@ -54,9 +54,13 @@
                     %a{:href => matches_path(admin: true)} Matches
                   %li
                     %a{:href => root_path(admin: true)} Players
+                  %li
+                    %a{:href => "/logout"} Logout
             - else
               %li
-                %a{:href => new_match_path} Admin
+                %a{:href => "/login"}
+                  %i.glyphicon.glyphicon-lock
+                  Admin
         / /.navbar-collapse
       / /.container-fluid
     .container

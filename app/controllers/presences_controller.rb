@@ -1,5 +1,5 @@
 class PresencesController < ApplicationController
-  http_basic_authenticate_with name: ENV['username'], password: ENV['password']
+  before_filter :authorize
   before_action :set_presence, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
