@@ -3,7 +3,7 @@
     %tbody
       %tr
         %td Partite giocate:
-        %td=Match.where("played_on < ?", Time.now).count
+        %td=Match.where("played = 't'").count
       %tr
         %td Vinte dai neri:
         %td=Match.where("white_goals < black_goals").count

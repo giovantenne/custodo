@@ -3,8 +3,8 @@
     %thead
       %tr
         %th Giocatore
+        %th.text-center Punti
         %th.text-center Giocate
-        %th.text-center Score
         -if params["admin"]=="true"
           %th{colspan: "2"}
         -else
@@ -17,9 +17,9 @@
         %tr.clickable-row{data: {href: player_path(player)}}
           %td
             %strong=player.name
-          %td.text-center=results[0]
           %td.text-center
-            ="#{score(results)}%"
+            ="#{score(results)}"
+          %td.text-center=results[0]
           -if params["admin"]=="true"
             %td.text-center
               = link_to  edit_player_path(player),class: "btn btn-warning btn-sm" do

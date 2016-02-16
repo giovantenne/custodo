@@ -12,7 +12,7 @@ module PlayersHelper
   end
   def score(results)
     if results[0]>0
-      return (results[1]*3+results[3])*100/(3*results[0])
+      return (results[1]*3)+(results[3]*2+results[2])
     else
       return 0
     end
