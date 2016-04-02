@@ -7,12 +7,20 @@
         %th.text-center{colspan:2}
           Data:
           =I18n.l(@match.played_on, format: "%d/%m/%Y")
-        %tr
-          %th.text-center Goal bianchi:
-          %th.text-center Goal neri:
-        %tr
-          %th.text-center=@match.white_goals
-          %th.text-center=@match.black_goals
+        -if !@match.played
+          %tr
+            %th.text-center Vinte dai bianchi:
+            %th.text-center Vinte dai neri:
+          %tr
+            %th.text-center=Match.where("white_goals > black_goals").count
+            %th.text-center=Match.where("white_goals < black_goals").count
+        -else
+          %tr
+            %th.text-center Goal bianchi:
+            %th.text-center Goal neri:
+          %tr
+            %th.text-center=@match.white_goals
+            %th.text-center=@match.black_goals
     %tbody
       %tr
         %td.text-center{style: "padding:15px"}
@@ -63,11 +71,11 @@
                     ="(#{score})"
                     -percs=percs+perc
                     -players=players+1
-                    -black_score = white_score + score
+                    -black_score = black_score + score
             -if !@match.played
               %tr
                 %td
                 %td.success
                   %strong
                     ="#{percs/players}%"
-                    ="(#{white_score})"
+                    ="(#{black_score})"

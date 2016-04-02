@@ -3,15 +3,15 @@
     %thead
       %tr
         %th Giocatore
-        %th.text-center Punti
-        %th.text-center Score
-        %th.text-center Giocate
+        %th.text-center Pnt
+        %th.text-center Scr
+        %th.text-center G
         -if params["admin"]=="true"
           %th{colspan: "2"}
         -else
-          %th.text-center Vinte
-          %th.text-center Perse
-          %th.text-center Pari
+          %th.text-center V
+          %th.text-center P
+          %th.text-center N
     %tbody
       -Player.order("name ASC").each do |player|
         -results=player.results
