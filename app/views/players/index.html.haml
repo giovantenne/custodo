@@ -4,6 +4,7 @@
       %tr
         %th Giocatore
         %th.text-center Punti
+        %th.text-center Score
         %th.text-center Giocate
         -if params["admin"]=="true"
           %th{colspan: "2"}
@@ -19,6 +20,9 @@
             %strong=player.name
           %td.text-center
             ="#{score(results)}"
+          %td.text-center
+            -if results[0]>0
+              ="#{(score(results)*100/(results[0]*3))}%"
           %td.text-center=results[0]
           -if params["admin"]=="true"
             %td.text-center

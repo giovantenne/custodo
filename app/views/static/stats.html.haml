@@ -13,4 +13,10 @@
       %tr
         %td Pareggiate:
         %td=Match.where("white_goals = black_goals").where("played_on < ?", Time.now).count
+      %tr
+        %td Goals neri:
+        %td=Match.sum(:black_goals)
+      %tr
+        %td Goals bianchi:
+        %td=Match.sum(:white_goals)
 

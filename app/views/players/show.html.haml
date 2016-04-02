@@ -12,6 +12,9 @@
         %th Punti
         %td="#{score(results)}"
       %tr
+        %th Score
+        %td="#{(score(results)*100/(results[0]*3))}%"
+      %tr
         %th Vinte
         %td=results[1]
       %tr
