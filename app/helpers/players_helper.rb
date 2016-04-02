@@ -18,4 +18,11 @@ module PlayersHelper
       return 0
     end
   end
+  def classic_score(results)
+    if results[0] > 0
+      return (results[1] * 3) + (results[3] )
+    else
+      return 0
+    end
+  end
 end

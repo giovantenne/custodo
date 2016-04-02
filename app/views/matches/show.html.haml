@@ -1,6 +1,4 @@
 -cache(cache_key_for_results("match-show-#{@match.id}")) do
-  -white_score=0
-  -black_score=0
   %table.table.table-condensed.table-bordered
     %thead
       %tr
@@ -34,7 +32,7 @@
                 -if !@match.played
                   %td
                     -results=p.player.results
-                    -score=score(results)
+                    -score=classic_score(results)
                     -if results[0] != 0
                       -perc=(score*100/(results[0]*3))
                     -else
@@ -42,7 +40,6 @@
                     ="#{perc.to_s}%"
                     -percs=percs+perc
                     -players=players+1
-                    -white_score = white_score + score
             -if !@match.played
               %tr
                 %td
@@ -60,7 +57,7 @@
                 -if !@match.played
                   %td
                     -results=p.player.results
-                    -score=score(results)
+                    -score=classic_score(results)
                     -if results[0] != 0
                       -perc=(score*100/(results[0]*3))
                     -else
@@ -68,7 +65,6 @@
                     ="#{perc.to_s}%"
                     -percs=percs+perc
                     -players=players+1
-                    -black_score = black_score + score
             -if !@match.played
               %tr
                 %td
