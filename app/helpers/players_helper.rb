@@ -20,7 +20,7 @@ module PlayersHelper
   end
   def classic_score(results)
     if results[0] > 0
-      return (results[1] * 3) + (results[3] )
+      return (results[1] * 3) + (results[3] ).to_f
     else
       return 0
     end

@@ -8,9 +8,10 @@
       %tr
         %th Punti
         %td="#{score(results)}"
-      %tr
-        %th Score
-        %td="#{(classic_score(results)*100/(results[0]*3))}%"
+      -if results[0]!=0
+        %tr
+          %th Score
+          %td="#{(classic_score(results)*100/(results[0]*3)).round(2)}%"
       %tr
         %th Giocate
         %td=results[0]

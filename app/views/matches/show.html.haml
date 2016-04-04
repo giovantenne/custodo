@@ -34,18 +34,16 @@
                     -results=p.player.results
                     -score=classic_score(results)
                     -if results[0] != 0
-                      -perc=(score*100/(results[0]*3))
-                    -else
-                      -perc=100
-                    ="#{perc.to_s}%"
-                    -percs=percs+perc
-                    -players=players+1
+                      -perc=(score*100/(results[0]*3)).round(2)
+                      ="#{perc.to_s}%"
+                      -percs=percs+perc
+                      -players=players+1
             -if !@match.played
               %tr
                 %td
                 %td.success
                   %strong
-                    ="#{percs/players}%"
+                    ="#{(percs/players).round(2)}%"
         %td.text-center{style: "padding:15px"}
           %table.table.table-bordered.table-condensed.table-striped.table-hover{style: "margin-bottom:0px"}
             -percs=0
@@ -59,15 +57,13 @@
                     -results=p.player.results
                     -score=classic_score(results)
                     -if results[0] != 0
-                      -perc=(score*100/(results[0]*3))
-                    -else
-                      -perc=100
-                    ="#{perc.to_s}%"
-                    -percs=percs+perc
-                    -players=players+1
+                      -perc=(score*100/(results[0]*3)).round(2)
+                      ="#{perc.to_s}%"
+                      -percs=percs+perc
+                      -players=players+1
             -if !@match.played
               %tr
                 %td
                 %td.success
                   %strong
-                    ="#{percs/players}%"
+                    ="#{(percs/players).round(2)}%"
