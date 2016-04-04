@@ -11,7 +11,8 @@
       -if results[0]!=0
         %tr
           %th Score
-          %td="#{(classic_score(results)*100/(results[0]*3)).round(2)}%"
+          %td
+            ="#{number_with_precision(classic_score(results)*100/(results[0]*3), precision: 2)}%"
       %tr
         %th Giocate
         %td=results[0]
