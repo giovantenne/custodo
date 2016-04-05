@@ -5,18 +5,18 @@
         %td Partite giocate:
         %td=Match.where("played = 't'").count
       %tr
-        %td Vinte dai neri:
-        %td=Match.where("white_goals < black_goals").count
-      %tr
         %td Vinte dai bianchi:
         %td=Match.where("white_goals > black_goals").count
       %tr
-        %td Pareggiate:
-        %td=Match.where("white_goals = black_goals").where("played_on < ?", Time.now).count
+        %td Vinte dai neri:
+        %td=Match.where("white_goals < black_goals").count
       %tr
-        %td Goals neri:
-        %td=Match.sum(:black_goals)
+        %td Pareggiate:
+        %td=Match.where("white_goals = black_goals").where("played = 't'").count
       %tr
         %td Goals bianchi:
         %td=Match.sum(:white_goals)
+      %tr
+        %td Goals neri:
+        %td=Match.sum(:black_goals)
 
