@@ -36,7 +36,6 @@ gem 'simple_form'
 gem 'pg'
 gem 'figaro'
 gem 'jquery-turbolinks'
-gem 'dalli'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
