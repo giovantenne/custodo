@@ -24,7 +24,9 @@ $(document).ready(function() {
     if(event.target.classList[0]!="btn")
       Turbolinks.visit($(this).data("href"));
   });
+  
   $(".spinner").hide();
+
   $(document).on("page:fetch", function(){
     myVar=setTimeout(function(){$(".spinner").show()}, 500);
   });
@@ -35,10 +37,8 @@ $(document).ready(function() {
   });
 
 
-
 }); 
 $(document).on('click','.navbar-collapse.in',function(e) {
-
     if( $(e.target).is('a') && ( $(e.target).attr('class') != 'dropdown-toggle' ) ) {
         $(this).collapse('hide');
     }
