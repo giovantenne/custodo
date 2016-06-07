@@ -41,3 +41,20 @@
           %td.text-center=p.match.white_goals
           %td.text-center=p.match.black_goals
           %td.text-center=p.match.presences.count
+  %table.table.table-condensed.table-striped.table-bordered.table-hover#myTable2
+    %thead
+      %tr
+        %th.text-center Giocatore
+        %th.text-center G
+        %th.text-center V
+        %th.text-center P
+        %th.text-center N
+    %tbody
+      -Player.order(:name).each do |player|
+        -if @player != player
+          %tr.clickable-row{data: {href: player_path(player)}}
+            %td.text-center=player.name
+            %th.text-center= Presence.where("(player_id = ? or player_id = ?)", @player, player).having("COUNT(\"presences\".\"id\") = 2").group(:match_id,:team).count(:id).count
+            %th.text-center=Presence.joins(:match).where("(player_id = ? or player_id = ?) and ((team = 'white' AND matches.white_goals > matches.black_goals  ) OR (team = 'black' AND matches.black_goals > matches.white_goals))", @player, player).having("COUNT(\"presences\".\"id\") = 2").group(:match_id,:team).count(:id).count
+            %th.text-center=Presence.joins(:match).where("(player_id = ? or player_id = ?) and ((team = 'black' AND matches.white_goals > matches.black_goals  ) OR (team = 'white' AND matches.black_goals > matches.white_goals))", @player, player).having("COUNT(\"presences\".\"id\") = 2").group(:match_id,:team).count(:id).count
+            %th.text-center=Presence.joins(:match).where("(player_id = ? or player_id = ?) and ( matches.white_goals = matches.black_goals )", @player, player).having("COUNT(\"presences\".\"id\") = 2").group(:match_id,:team).count(:id).count

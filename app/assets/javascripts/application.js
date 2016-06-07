@@ -20,6 +20,10 @@ $(document).ready(function() {
   $("#myTable").tablesorter({
     sortList: [[1,1],[2,1],[3,1],[4,0]]
   }); 
+
+  $("#myTable2").tablesorter({
+    sortList: [[1,1],[2,1],[3,1]]
+  }); 
   $(".clickable-row").click(function(event) {
     if(event.target.classList[0]!="btn")
       Turbolinks.visit($(this).data("href"));
