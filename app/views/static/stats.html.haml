@@ -20,14 +20,14 @@
         %td Goals neri:
         %td=Match.sum(:black_goals)
       %tr
-        %td Coppie più proficue
+        %td="Coppie più proficue con #{@good_score} vittorie"
         %td
           -@good_pairs.each do |pair|
-            ="#{pair[0].name} e #{pair[1].name} con #{@good_score} vittorie"
+            ="#{pair[0].name} e #{pair[1].name}"
             %br
       %tr
-        %td Coppie meno proficue
+        %td="Coppie meno proficue con #{@bad_score} sconfitte"
         %td
           -@bad_pairs.each do |pair|
-            ="#{pair[0].name} e #{pair[1].name} con #{@bad_score} sconfitte"
+            ="#{pair[0].name} e #{pair[1].name}"
             %br
